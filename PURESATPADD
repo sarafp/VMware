@@ -1,0 +1,19 @@
+$vcenter = "your vcenter name"
+$vcuser = "userid"
+#$vcpass = ""
+connect-viserver -Server $vcenter -username $vcuser
+
+#$Hosts = Get-VMHost
+$Hosts = Get-Content "path of file with host list.txt"
+
+#cycle through each host
+
+ForEach ($VMHost in $Hosts)
+{
+    $esxcli = Get-EsxCli -vmhost $VMHost
+	  $esxcli.storage.nmp.satp.rule.add($null,$null,$null,$null,$null,$null,"FlashArray",$null,"VMW_PSP_RR","iops=1","VMW_SATP_ALUA",$null,$null, "PURE")
+    Write " Updated Host:" $VMHost.Name	  
+}
+
+#disconnect from vcenter server
+Disconnect-VIServer -Server $vcenter -Confirm:$false
