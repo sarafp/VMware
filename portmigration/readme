@@ -3,4 +3,4 @@ VM,VLANName,
 Vm123,VLAN1,Network Adapter 1
 get-cluster clustername | get-vm | Get-NetworkAdapter -Name "Network Adapter 1" |  where {$_.NetworkName -like "dv*"} | Select Parent, NetworkName,Name
 
- 
+ save it in csv to be used in script.
