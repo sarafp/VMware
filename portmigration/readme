@@ -1,0 +1,5 @@
+Csv file format:
+VM,VLANName, 
+Vm123,VLAN1,Network Adapter 1
+
+ 
